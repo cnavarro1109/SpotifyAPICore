@@ -11,6 +11,7 @@ using SpotifyAPI.Web.Auth;
 using SpotifyAPI.Web.Enums;
 using SpotifyAPI.Web.Models;
 using SpotifyTrackGuide.Auth;
+using SpotifyTrackGuide.Models;
 
 namespace SpotifyTrackGuide.Controllers
 {
@@ -38,7 +39,7 @@ namespace SpotifyTrackGuide.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<string>>> GetAsync()
         {
-
+            #region OldCode
             //PrivateProfile profile = await _api.GetPrivateProfileAsync();
             //if (!profile.HasError())
             //{
@@ -51,15 +52,87 @@ namespace SpotifyTrackGuide.Controllers
             //{
             //    AccessToken = token.AccessToken,
             //    TokenType = token.TokenType,
-                
-            //};
 
-            FullTrack track = _api.GetTrack("3Hvu1pq89D4R0lyPBoujSv");
+            //};
+            #endregion
+
+            FullTrack track = await _api.GetTrackAsync("3Hvu1pq89D4R0lyPBoujSv");
             // PrivateProfile profile = await _api.GetPrivateProfileAsync();
 
             return new string[] { "ERROR" };
         }
 
- 
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Paging<SimplePlaylist>>> GetSavedAlbumsAsync(int id)
+        //{
+        //    var userPlayList = await _api.GetUserPlaylistsAsync("cn1109", 20, 0);
+        //    foreach (var list in userPlayList.Items)
+        //    {
+        //        var playList = await _api.GetPlaylistTracksAsync(list.Id, "", 100, 0, "");
+        //        foreach (var track in playList.Items)
+        //        {
+        //            var response = await _api.GetTrackAsync(track.Track.Id);
+        //            var dance = await _api.GetAudioFeaturesAsync(response.Id);
+        //        }
+        //    }
+        //    return userPlayList;
+        //    // savedAlbums.Items.ForEach(album => Console.WriteLine(album.Album.Name));
+        //}
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TrackAverage>> GetUserPlayList(string id)
+        {
+            List<float> fDance = new List<float>();
+            List<float> fEnergy = new List<float>();
+            List<float> fValence = new List<float>();
+
+            var playList = await _api.GetPlaylistTracksAsync(id, "", 100, 0, "");
+            foreach(var list in playList.Items)
+            {
+                var song = _api.GetAudioFeaturesAsync(list.Track.Id);
+
+                // Storing the values for later calculation
+                fDance.Add(song.Result.Danceability);
+                fEnergy.Add(song.Result.Energy);
+                fValence.Add(song.Result.Valence);
+            }
+
+
+            TrackAverage average = new TrackAverage
+            {
+                overall = GetAverageTotal(fDance),
+                energy = GetAverageTotal(fEnergy),
+                valence = GetAverageTotal(fValence),
+                danceability = new Danceability
+                {
+                    min = GetMinValue(fDance),
+                    max = GetMaxValue(fDance)
+                }
+            };
+
+            return average;
+
+
+        }
+
+        private double GetAverageTotal(List<float> records)
+        {
+            double average = records.Count > 0 ? records.Average() : 0.0;
+            return average;
+        }
+
+        private double GetMinValue(List<float> records)
+        {
+            double min = records.Min(x => x);
+            return min;
+        }
+
+        private double GetMaxValue(List<float> records)
+        {
+            double min = records.Max(x => x);
+            return min;
+        }
+
     }
-}
+
+ }

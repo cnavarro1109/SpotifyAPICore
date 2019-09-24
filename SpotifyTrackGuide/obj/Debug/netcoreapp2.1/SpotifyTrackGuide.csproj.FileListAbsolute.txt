@@ -12,3 +12,17 @@ C:\Users\CNAVARRO\source\repos\SpotifyTrackGuide\SpotifyTrackGuide\obj\Debug\net
 C:\Users\CNAVARRO\source\repos\SpotifyTrackGuide\SpotifyTrackGuide\bin\Debug\netcoreapp2.1\SpotifyTrackGuide.pdb
 C:\Users\CNAVARRO\source\repos\SpotifyTrackGuide\SpotifyTrackGuide\obj\Debug\netcoreapp2.1\SpotifyTrackGuide.dll
 C:\Users\CNAVARRO\source\repos\SpotifyTrackGuide\SpotifyTrackGuide\obj\Debug\netcoreapp2.1\SpotifyTrackGuide.pdb
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\bin\Debug\netcoreapp2.1\SpotifyTrackGuide.deps.json
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\bin\Debug\netcoreapp2.1\SpotifyTrackGuide.runtimeconfig.json
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\bin\Debug\netcoreapp2.1\SpotifyTrackGuide.runtimeconfig.dev.json
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\bin\Debug\netcoreapp2.1\SpotifyTrackGuide.dll
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\bin\Debug\netcoreapp2.1\SpotifyTrackGuide.pdb
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\obj\Debug\netcoreapp2.1\SpotifyTrackGuide.csprojAssemblyReference.cache
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\obj\Debug\netcoreapp2.1\SpotifyTrackGuide.csproj.CoreCompileInputs.cache
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\obj\Debug\netcoreapp2.1\SpotifyTrackGuide.RazorAssemblyInfo.cache
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\obj\Debug\netcoreapp2.1\SpotifyTrackGuide.RazorAssemblyInfo.cs
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\obj\Debug\netcoreapp2.1\SpotifyTrackGuide.AssemblyInfoInputs.cache
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\obj\Debug\netcoreapp2.1\SpotifyTrackGuide.AssemblyInfo.cs
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\obj\Debug\netcoreapp2.1\SpotifyTrackGuide.RazorTargetAssemblyInfo.cache
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\obj\Debug\netcoreapp2.1\SpotifyTrackGuide.dll
+C:\SampleProjects\SpotifyAPICore\SpotifyTrackGuide\obj\Debug\netcoreapp2.1\SpotifyTrackGuide.pdb

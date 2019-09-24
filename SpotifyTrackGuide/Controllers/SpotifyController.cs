@@ -11,6 +11,7 @@ using SpotifyAPI.Web.Auth;
 using SpotifyAPI.Web.Enums;
 using SpotifyAPI.Web.Models;
 using SpotifyTrackGuide.Auth;
+using SpotifyTrackGuide.Helper;
 using SpotifyTrackGuide.Models;
 
 namespace SpotifyTrackGuide.Controllers
@@ -79,8 +80,8 @@ namespace SpotifyTrackGuide.Controllers
         //    // savedAlbums.Items.ForEach(album => Console.WriteLine(album.Album.Name));
         //}
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<TrackAverage>> GetUserPlayList(string id)
+        [HttpGet("/api/playlist/{id}")]
+        public async Task<ActionResult<TrackAverage>> GetPlayList(string id)
         {
             List<float> fDance = new List<float>();
             List<float> fEnergy = new List<float>();
@@ -100,39 +101,39 @@ namespace SpotifyTrackGuide.Controllers
 
             TrackAverage average = new TrackAverage
             {
-                overall = GetAverageTotal(fDance),
-                energy = GetAverageTotal(fEnergy),
-                valence = GetAverageTotal(fValence),
+                danceabilityAverage = Calculate.GetAverageTotal(fDance),
                 danceability = new Danceability
                 {
-                    min = GetMinValue(fDance),
-                    max = GetMaxValue(fDance)
+                    min = Calculate.GetMinValue(fDance),
+                    max = Calculate.GetMaxValue(fDance)
+                },
+                energyAverage = Calculate.GetAverageTotal(fEnergy),
+                energy = new Energy
+                {
+                    min = Calculate.GetMinValue(fEnergy),
+                    max = Calculate.GetMaxValue(fEnergy)
+                },
+                valenceAverage = Calculate.GetAverageTotal(fValence),
+                valence = new Valence
+                {
+                    min = Calculate.GetMinValue(fValence),
+                    max = Calculate.GetMaxValue(fValence)
                 }
+
             };
 
             return average;
-
-
         }
 
-        private double GetAverageTotal(List<float> records)
+        [HttpGet("/api/users/{Id}/stats")]
+        public async Task<ActionResult<Paging<SimplePlaylist>>> GetUserPlayList(string Id)
         {
-            double average = records.Count > 0 ? records.Average() : 0.0;
-            return average;
+            var userPlayList = await _api.GetUserPlaylistsAsync(Id, 20, 0);
+            return userPlayList;
         }
 
-        private double GetMinValue(List<float> records)
-        {
-            double min = records.Min(x => x);
-            return min;
-        }
 
-        private double GetMaxValue(List<float> records)
-        {
-            double min = records.Max(x => x);
-            return min;
-        }
 
-    }
+        }
 
  }

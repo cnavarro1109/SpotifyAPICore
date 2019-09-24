@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyTrackGuide", "SpotifyTrackGuide\SpotifyTrackGuide.csproj", "{EB968FBD-C8C1-47AB-AB1E-432A95226FEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB968FBD-C8C1-47AB-AB1E-432A95226FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB968FBD-C8C1-47AB-AB1E-432A95226FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB968FBD-C8C1-47AB-AB1E-432A95226FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB968FBD-C8C1-47AB-AB1E-432A95226FEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {874F725E-2DB7-4484-BF51-7E611F67E0D3}
+	EndGlobalSection
+EndGlobal

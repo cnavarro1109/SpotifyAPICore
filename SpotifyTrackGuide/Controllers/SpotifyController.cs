@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using SpotifyAPI.Web;
@@ -21,39 +22,40 @@ namespace SpotifyTrackGuide.Controllers
     public class SpotifyController : ControllerBase
     {
         private readonly IConfiguration _config;
-        private SpotifyWebAPI _api;
         private Spotify _spotify;
+        private readonly IMemoryCache _cache;
 
-        public SpotifyController(IConfiguration config)
+        public SpotifyController(IConfiguration config, IMemoryCache cache)
         {
             _spotify = new Spotify(config);
+            _cache = cache;
         }
 
-        // GET api/values
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<string>>> GetAsync()
-        {
-            #region OldCode
-            //PrivateProfile profile = await _api.GetPrivateProfileAsync();
-            //if (!profile.HasError())
-            //{
-            //    return new string[] { profile.DisplayName };
-            //}
+        //// GET api/values
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<string>>> GetAsync()
+        //{
+        //    #region OldCode
+        //    //PrivateProfile profile = await _api.GetPrivateProfileAsync();
+        //    //if (!profile.HasError())
+        //    //{
+        //    //    return new string[] { profile.DisplayName };
+        //    //}
 
-            //CredentialsAuth auth = new CredentialsAuth("d2b2ac4c97184c698277356646f044d0", "e7cf547744434a4fbfeb130f60281ef1");
-            //Token token = await auth.GetToken();
-            //_api = new SpotifyWebAPI()
-            //{
-            //    AccessToken = token.AccessToken,
-            //    TokenType = token.TokenType,
+        //    //CredentialsAuth auth = new CredentialsAuth("d2b2ac4c97184c698277356646f044d0", "e7cf547744434a4fbfeb130f60281ef1");
+        //    //Token token = await auth.GetToken();
+        //    //_api = new SpotifyWebAPI()
+        //    //{
+        //    //    AccessToken = token.AccessToken,
+        //    //    TokenType = token.TokenType,
 
-            //};
-            #endregion
+        //    //};
+        //    #endregion
 
-            FullTrack track = await _api.GetTrackAsync("3Hvu1pq89D4R0lyPBoujSv");
+        //    FullTrack track = await _api.GetTrackAsync("3Hvu1pq89D4R0lyPBoujSv");
 
-            return new string[] { "ERROR" };
-        }
+        //    return new string[] { "ERROR" };
+        //}
 
         [HttpGet("/api/playlist/{id}")]
         public async Task<ActionResult<TrackAverage>> GetPlayList(string id)
@@ -108,10 +110,17 @@ namespace SpotifyTrackGuide.Controllers
         [HttpGet("/api/users/{Id}/stats")]
         public string GetUserPlayList(string Id)
         {
-            var response = _spotify.GetPlatListStats(Id);
-            return JsonConvert.SerializeObject(response);
+            var cacheEntry = _cache.GetOrCreate("CacheUserPlayList", entry =>
+            {
+                // Cache for 1 minutes. Increase if needed
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(60);
 
-            // return response.ToList();
+                var response = _spotify.GetPlatListStats(Id);
+                return JsonConvert.SerializeObject(response);
+            });
+
+            return cacheEntry;
+            
         }
 
 

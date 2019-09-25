@@ -29,7 +29,7 @@ namespace SpotifyTrackGuide.Helper
         }
 
 
-        public TrackAverage GetPLayList(string id)
+        public TrackAverage GetPlayList(string id)
         {
             List<float> fDance = new List<float>();
             List<float> fEnergy = new List<float>();
@@ -85,7 +85,7 @@ namespace SpotifyTrackGuide.Helper
             
             foreach(var list in userPlayList.Items)
             {
-                var result = GetPLayList(list.Id);
+                var result = GetPlayList(list.Id);
                 if (result != null)
                 {
                     Stats stats = new Stats

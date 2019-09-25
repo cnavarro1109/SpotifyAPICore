@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SampleProjects\\SpotifyAPICore\\SpotifyTrackGuide\\SpotifyTrackGuide.csproj": {}
+    "C:\\Users\\CNAVARRO\\source\\repos\\SpotifyAPICore\\SpotifyTrackGuide\\SpotifyTrackGuide.csproj": {}
   },
   "projects": {
-    "C:\\SampleProjects\\SpotifyAPICore\\SpotifyTrackGuide\\SpotifyTrackGuide.csproj": {
+    "C:\\Users\\CNAVARRO\\source\\repos\\SpotifyAPICore\\SpotifyTrackGuide\\SpotifyTrackGuide.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SampleProjects\\SpotifyAPICore\\SpotifyTrackGuide\\SpotifyTrackGuide.csproj",
+        "projectUniqueName": "C:\\Users\\CNAVARRO\\source\\repos\\SpotifyAPICore\\SpotifyTrackGuide\\SpotifyTrackGuide.csproj",
         "projectName": "SpotifyTrackGuide",
-        "projectPath": "C:\\SampleProjects\\SpotifyAPICore\\SpotifyTrackGuide\\SpotifyTrackGuide.csproj",
-        "packagesPath": "C:\\Users\\cnavarro\\.nuget\\packages\\",
-        "outputPath": "C:\\SampleProjects\\SpotifyAPICore\\SpotifyTrackGuide\\obj\\",
+        "projectPath": "C:\\Users\\CNAVARRO\\source\\repos\\SpotifyAPICore\\SpotifyTrackGuide\\SpotifyTrackGuide.csproj",
+        "packagesPath": "C:\\Users\\CNAVARRO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\CNAVARRO\\source\\repos\\SpotifyAPICore\\SpotifyTrackGuide\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\cnavarro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\CNAVARRO\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
